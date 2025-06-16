@@ -1,0 +1,15 @@
+{
+  "extends": "@packages/tsconfig/tsconfig.base.json",
+  "files": [],
+  "references": [
+    {
+      "path": "./apps/01-basic-auth/client"
+    },
+    {
+      "path": "./apps/01-basic-auth/server"
+    },
+    {
+      "path": "./packages/db"
+    }
+  ]
+}

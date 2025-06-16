@@ -1,0 +1,19 @@
+{
+  "name": "auth-strategies",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "author": {
+    "name": "Maksim Epifanov",
+    "email": "maksepifanovbr@gmail.com"
+  },
+  "license": "ISC",
+  "workspaces": [
+    "packages/*",
+    "apps/**/*"
+  ],
+  "packageManager": "bun@1.2.16",
+  "engines": {
+    "bun": ">=1.2.16"
+  }
+}
