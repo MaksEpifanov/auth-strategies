@@ -1,0 +1,16 @@
+{
+  "name": "@packages/db",
+  "main": "./index.ts",
+  "types": "./types/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "start": "tsc"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@packages/tsconfig": "workspace:*"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}
