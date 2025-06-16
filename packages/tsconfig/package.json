@@ -1,0 +1,11 @@
+{
+  "name": "@packages/tsconfig",
+  "type": "module",
+  "files": [
+    "./tsconfig.client.json",
+    "./tsconfig.server.json"
+  ],
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}
