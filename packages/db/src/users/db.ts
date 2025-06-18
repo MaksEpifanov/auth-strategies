@@ -2,6 +2,8 @@ import Database from "bun:sqlite";
 import { initUsersDb } from "./mock/init";
 import type { User } from "./model/users";
 
+type UserResponse = User | undefined;
+
 export class UsersDB {
   private db: Database = new Database(`${import.meta.dir}/users.db`, {
     create: true,
@@ -15,26 +17,39 @@ export class UsersDB {
     await initUsersDb(this.db);
   }
 
-  addUser({ login, name, password, role }: Omit<User, "id">): void {
+  async addUser({
+    login,
+    name,
+    password,
+    role,
+  }: Omit<User, "id">): Promise<void> {
     const stmt = this.db.prepare(
       "INSERT INTO users (login, name, password, role) VALUES (?, ?, ?, ?)"
     );
-    stmt.run(login, name, password, role);
+    await stmt.run(login, name, password, role);
   }
 
-  getUser(id: string): User | undefined {
-    return this.db.query("SELECT * FROM users WHERE id = ?").get(id) as
-      | User
-      | undefined;
+  async getUser(id: string): Promise<UserResponse> {
+    return (await this.db
+      .query("SELECT * FROM users WHERE id = ?")
+      .get(id)) as UserResponse;
   }
 
-  deleteUser(id: string): void {
+  async getUserByLogin(login: string): Promise<UserResponse> {
+    return (await this.db
+      .query("SELECT * FROM users WHERE login = ?")
+      .get(login)) as UserResponse;
+  }
+
+  async deleteUser(id: string): Promise<void> {
     const stmt = this.db.prepare("DELETE FROM users WHERE id = ?");
-    stmt.run(id);
+    await stmt.run(id);
   }
 
   async getUsers() {
-    return this.db.query("SELECT * FROM users").all() as User[] | undefined;
+    return (await this.db.query("SELECT * FROM users").all()) as
+      | User[]
+      | undefined;
   }
 
   close(): void {
