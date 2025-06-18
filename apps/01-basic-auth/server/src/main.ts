@@ -1,21 +1,15 @@
-import { type Context, Elysia } from "elysia";
+import { Elysia } from "elysia";
 import { cors } from "@elysiajs/cors";
 
 import { usersDB } from "@packages/db";
 
-const authGuard = async ({ headers, set, status }: Context) => {
-  const authHeader = headers.authorization;
-  if (!authHeader || !authHeader.startsWith("Basic ")) {
-    set.headers["WWW-Authenticate"] = 'Basic realm="Restricted Area"';
-    return status(401, { message: "Missing or invalid Authorization header" });
-  }
-};
+import { authGuard } from "./authGuard";
 
 const app = new Elysia({
   prefix: "/api",
 })
   .use(cors())
-  .get("signup", () => {})
+  .get("status", ({ status }) => status(200, { message: "Server is running!" }))
   .get("users", async () => {
     const users = await usersDB.getUsers();
     return users;
