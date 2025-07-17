@@ -3,13 +3,10 @@
   "files": [],
   "references": [
     {
-      "path": "./apps/01-basic-auth/client"
+      "path": "./apps/01-basic-auth"
     },
     {
-      "path": "./apps/01-basic-auth/server"
-    },
-    {
-      "path": "./packages/db"
+      "path": "./packages/services"
     }
   ]
 }

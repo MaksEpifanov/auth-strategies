@@ -1,0 +1,21 @@
+{
+  "name": "@packages/services",
+  "main": "./index.ts",
+  "types": "./types/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "start": "tsc"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@packages/tsconfig": "workspace:*"
+  },
+  "peerDependencies": {
+    "typescript": "^5",
+    "elysia": "^1.3.5"
+  },
+  "dependencies": {
+    "elysia": "^1.3.5",
+    "typescript": "^5"
+  }
+}
