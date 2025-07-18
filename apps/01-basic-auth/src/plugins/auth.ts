@@ -8,7 +8,7 @@ const setStatus = ({ set, status }: Context, msg: string) => {
 
 export const auth = () =>
   new Elysia({
-    name: "auth",
+    name: "auth-plug",
   })
     .use(services())
     .macro({

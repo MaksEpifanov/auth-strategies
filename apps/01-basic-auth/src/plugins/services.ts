@@ -3,7 +3,7 @@ import Elysia from "elysia";
 
 export const services = () =>
   new Elysia({
-    name: "services",
+    name: "services-plug",
   }).decorate("services", {
     todos: todosService,
     users: usersService,
